@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.posts__content {
+    display: grid;
+    grid-template-columns: 9fr 3fr;
+    grid-gap: 20px;
+}
