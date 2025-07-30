@@ -10,10 +10,12 @@ use Illuminate\View\View;
 
 final class ListPostsController extends WebController
 {
-    public function __invoke(ListPostsRequest $request, ListPostsAction $action, ListCategoriesAction $categoriesAction): View
+    public function __invoke(ListPostsRequest $request, ListPostsAction $postsAction, ListCategoriesAction $categoriesAction): View
     {
         $categories = $categoriesAction->run();
-        return view('blogSection@post::index', compact('categories'));
+        $posts = $postsAction->run();
+
+        return view('blogSection@post::index', compact('categories', 'posts'));
         //        $action->run($request);
         //
         //        return back();

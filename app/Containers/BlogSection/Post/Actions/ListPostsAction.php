@@ -2,19 +2,20 @@
 
 namespace App\Containers\BlogSection\Post\Actions;
 
-use App\Containers\BlogSection\Post\Tasks\ListPostsTask;
+use App\Containers\BlogSection\Post\Data\Repositories\PostRepository;
 use App\Containers\BlogSection\Post\UI\WEB\Requests\ListPostsRequest;
 use App\Ship\Parents\Actions\Action as ParentAction;
 
 final class ListPostsAction extends ParentAction
 {
     public function __construct(
-        private readonly ListPostsTask $listPostsTask,
+        private readonly PostRepository $repository,
     ) {
     }
 
-    public function run(ListPostsRequest $request): mixed
+    public function run(): mixed // ListPostsRequest $request
     {
-        return $this->listPostsTask->run();
+        //        return $this->repository->with('user')->addRequestCriteria()->paginate();
+        return $this->repository->with('user')->paginate(20);
     }
 }

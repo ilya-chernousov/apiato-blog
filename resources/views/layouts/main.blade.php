@@ -12,20 +12,12 @@
     <div class="container mx-auto">
         <header class="header">
             <div class="header__content min-h-20 flex justify-between items-center">
-                <span class="header__logo font-bold text-3xl">ApiatoBlog</span>
+                <a href="{{ route('index') }}" class="header__logo font-bold text-3xl">ApiatoBlog</a>
                 <div class="header__profile">
-                    @auth
-{{--                        <a href="{{ route('profile.index') }}" class="header__profile-link">--}}
-{{--                            <i class="fa-solid fa-user"></i>--}}
-{{--                            <span class="header__profile-name">{{ auth()->user()->name }}</span>--}}
-{{--                        </a>--}}
-                        <a href="#" class="header__profile-link">Профиль</a>
+                    @auth('web')
+                        <a href="{{ route('filament.admin.pages.dashboard')  }}" class="header__profile-link">Админ-панель</a>
                     @else
-{{--                        <a href="{{ route('login') }}" class="header__profile-link">--}}
-{{--                            <i class="fa-solid fa-user"></i>--}}
-{{--                            <span class="header__profile-name">Войти</span>--}}
-{{--                        </a>--}}
-                        <a href="#" class="header__profile-link">Войти</a>
+                        <a href="{{ route('filament.admin.auth.login')  }}" class="header__profile-link">Войти</a>
                     @endauth
                 </div>
             </div>

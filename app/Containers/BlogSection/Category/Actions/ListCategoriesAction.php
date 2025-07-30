@@ -2,20 +2,19 @@
 
 namespace App\Containers\BlogSection\Category\Actions;
 
-use App\Containers\BlogSection\Category\Models\Category;
-use App\Containers\BlogSection\Category\Tasks\ListCategoriesTask;
-use App\Containers\BlogSection\Category\UI\WEB\Requests\ListCategoriesRequest;
+use App\Containers\BlogSection\Category\Data\Repositories\CategoryRepository;
 use App\Ship\Parents\Actions\Action as ParentAction;
+use Illuminate\Support\Collection;
 
 final class ListCategoriesAction extends ParentAction
 {
-//    public function __construct(
-//        private readonly ListCategoriesTask $listCategoriesTask,
-//    ) {
-//    }
+    public function __construct(
+        private readonly CategoryRepository $repository,
+    ) {
+    }
 
-    public function run(): mixed // ListCategoriesRequest $request
+    public function run(): Collection // ListCategoriesRequest $request
     {
-        return Category::all();
+        return $this->repository->all();
     }
 }

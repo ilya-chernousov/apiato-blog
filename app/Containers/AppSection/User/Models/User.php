@@ -5,13 +5,17 @@ namespace App\Containers\AppSection\User\Models;
 use App\Containers\AppSection\Authorization\Enums\Role as RoleEnum;
 use App\Containers\AppSection\User\Data\Collections\UserCollection;
 use App\Containers\AppSection\User\Enums\Gender;
+use App\Containers\BlogSection\Post\Models\Post;
 use App\Ship\Parents\Models\UserModel as ParentUserModel;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 final class User extends ParentUserModel
 {
     protected $fillable = [
+        'lastname',
         'name',
+        'midname',
         'email',
         'password',
         'gender',
@@ -59,5 +63,10 @@ final class User extends ParentUserModel
         return new Attribute(
             get: static fn (string|null $value): string|null => is_null($value) ? null : strtolower($value),
         );
+    }
+
+    public function posts(): BelongsToMany
+    {
+        return $this->belongsToMany(Post::class);
     }
 }

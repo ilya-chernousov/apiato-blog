@@ -8,6 +8,6 @@ use Illuminate\Support\Facades\Route;
 
 //Route::get('posts', ListPostsController::class);
 
-Route::get('/', ListPostsController::class);
+Route::get('/', ListPostsController::class)->name('index');
 
 

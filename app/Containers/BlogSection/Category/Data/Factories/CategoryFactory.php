@@ -18,7 +18,7 @@ final class CategoryFactory extends ParentFactory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
+            'name' => $this->faker->words(1, true),
         ];
     }
 }

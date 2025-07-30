@@ -8,7 +8,7 @@ use App\Ship\Parents\Repositories\Repository as ParentRepository;
 /**
  * @template TModel of Post
  *
- * @extends ParentRepository<TModel>
+ * @extends ParentRepository<TModel>https://apiato.io/docs/components/optional-components/repository/repositories
  */
 final class PostRepository extends ParentRepository
 {
