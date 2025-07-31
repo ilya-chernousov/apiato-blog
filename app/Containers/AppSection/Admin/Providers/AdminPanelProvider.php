@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Admin\Providers;
 
-use App\Ship\Parents\Providers\AdminPanelProviderParent;
+use App\Ship\Parents\Providers\ParentAdminPanelProvider;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -19,7 +19,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
-class AdminPanelProvider extends AdminPanelProviderParent
+class AdminPanelProvider extends ParentAdminPanelProvider
 {
     public function panel(Panel $panel): Panel
     {
@@ -31,12 +31,12 @@ class AdminPanelProvider extends AdminPanelProviderParent
             ->colors([
                 'primary' => Color::Amber,
             ])
-            ->discoverResources(in: app_path('Containers/AppSection/Admin/Resources'), for: 'App\\Containers\\AppSection\\Admin\\Resources')
-            ->discoverPages(in: app_path('Containers/AppSection/Admin/Pages'), for: 'App\\Containers\\AppSection\\Admin\\Pages')
+            ->discoverResources(in: app_path('Containers/AppSection/Admin/UI/WEB/Resources'), for: 'App\\Containers\\AppSection\\Admin\\UI\\WEB\\Resources')
+            ->discoverPages(in: app_path('Containers/AppSection/Admin/UI/WEB/Pages'), for: 'App\\Containers\\AppSection\\Admin\\UI\\WEB\\Pages')
             ->pages([
                 Pages\Dashboard::class,
             ])
-            ->discoverWidgets(in: app_path('Containers/AppSection/Admin/Widgets'), for: 'App\\Containers\\AppSection\\Admin\\Widgets')
+            ->discoverWidgets(in: app_path('Containers/AppSection/Admin/UI/WEB/Widgets'), for: 'App\\Containers\\AppSection\\Admin\\UI\\WEB\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,

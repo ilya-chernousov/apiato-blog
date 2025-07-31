@@ -3,6 +3,5 @@
 use App\Containers\BlogSection\Category\UI\WEB\Controllers\FindCategoryByIdController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('categories/{id}', FindCategoryByIdController::class)
-    ->middleware(['auth:web']);
+Route::get('/categories/{id}', FindCategoryByIdController::class)->name('categories.show');
 

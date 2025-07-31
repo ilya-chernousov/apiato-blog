@@ -10,9 +10,11 @@ final class SuperAdminSeeder_2 extends ParentSeeder
     public function run(CreateAdminAction $action): void
     {
         $userData = [
+            'lastname' => 'Super',
+            'name' => 'Admin',
             'email' => 'admin@admin.com',
             'password' => 'admin',
-            'name' => 'Super Admin',
+            'birth' => '2004-12-13',
         ];
 
         $action->run($userData);

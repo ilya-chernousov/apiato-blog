@@ -9,6 +9,7 @@ use App\Containers\BlogSection\Post\Models\Post;
 use App\Ship\Parents\Models\UserModel as ParentUserModel;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 final class User extends ParentUserModel
 {
@@ -65,8 +66,8 @@ final class User extends ParentUserModel
         );
     }
 
-    public function posts(): BelongsToMany
+    public function posts(): HasMany
     {
-        return $this->belongsToMany(Post::class);
+        return $this->hasMany(Post::class);
     }
 }

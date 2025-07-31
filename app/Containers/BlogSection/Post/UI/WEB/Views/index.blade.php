@@ -7,33 +7,8 @@
                 <h2 class="posts__title font-semibold text-2xl">Статьи</h2>
                 <div class="posts__list mt-5 grid grid-cols-3 gap-4">
                     @foreach($posts as $post)
-                        <div class="posts__list-item p-4 w-full border rounded-xl border-slate-400 hover:shadow-lg">
-                            <a href="{{ route('posts.show', ['id' => $post->id])  }}" class="posts__list-item-link">
-                                <div class="posts__list-item-image-block">
-                                    <img src="storage/{{ $post->image_path  }}" alt="" class="posts__list-item-image w-full">
-                                </div>
-                                <h3 class="posts__list-item-title mt-2 text-lg font-medium">{{ $post->title }}</h3>
-                                <p class="posts__list-item-body mt-1">{{ strip_tags($post->body) }}</p>
-                                <div class="posts__list-item-author mt-1 flex items-center gap-2">
-                                    <i class="bi bi-person-fill posts__list-item-author-icon text-gray-800"></i>
-                                    <div class="posts__list-item-author-name text-sm">{{ $post->user->name }} {{ $post->user->lastname }}</div>
-                                </div>
-                            </a>
-                        </div>
+                        @include('blogSection@post::layouts.post', ['post' => $post])
                     @endforeach
-{{--                    <div class="posts__list-item p-4 w-full border rounded-xl border-slate-400 hover:shadow-lg">--}}
-{{--                        <a href="#" class="posts__list-item-link">--}}
-{{--                            <div class="posts__list-item-image-block">--}}
-{{--                                <img src="demo/post-pic.png" alt="" class="posts__list-item-image w-full">--}}
-{{--                            </div>--}}
-{{--                            <h3 class="posts__list-item-title mt-2 text-lg font-medium">Заголовок</h3>--}}
-{{--                            <p class="posts__list-item-body mt-1">Текст</p>--}}
-{{--                            <div class="posts__list-item-author mt-1 flex items-center gap-2">--}}
-{{--                                <i class="bi bi-person-fill posts__list-item-author-icon text-gray-800"></i>--}}
-{{--                                <div class="posts__list-item-author-name text-sm">Автор</div>--}}
-{{--                            </div>--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
                 </div>
             </div>
             <div class="posts__categories">
@@ -41,7 +16,11 @@
                 <ul class="posts__categories-list mt-5 p-5 bg-slate-200 rounded-lg">
                     @foreach($categories as $category)
                         <li class="posts__categories-list-item mb-1">
-                            <a href="#" class="posts__categories-list-item-link">{{ $category->name }}</a>
+                            <a
+                                href="{{ route('categories.show', ['id' => $category->id])  }}"
+                                class="posts__categories-list-item-link">
+                                {{ $category->name }}
+                            </a>
                         </li>
                     @endforeach
                 </ul>

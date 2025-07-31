@@ -3,16 +3,14 @@
 namespace App\Containers\BlogSection\Category\UI\WEB\Controllers;
 
 use App\Containers\BlogSection\Category\Actions\FindCategoryByIdAction;
-use App\Containers\BlogSection\Category\UI\WEB\Requests\FindCategoryByIdRequest;
 use App\Ship\Parents\Controllers\WebController;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 final class FindCategoryByIdController extends WebController
 {
-    public function __invoke(FindCategoryByIdRequest $request, FindCategoryByIdAction $action): RedirectResponse
+    public function __invoke(int $id, FindCategoryByIdAction $action): View
     {
-        $action->run($request);
-
-        return back();
+        $category = $action->run($id);
+        return view('blogSection@category::show', compact('category'));
     }
 }

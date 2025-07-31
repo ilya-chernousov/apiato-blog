@@ -7,6 +7,7 @@ use App\Containers\BlogSection\Post\Models\Post;
 use App\Ship\Parents\Models\Model as ParentModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 final class Category extends ParentModel
 {
@@ -18,8 +19,8 @@ final class Category extends ParentModel
         return CategoryFactory::new();
     }
 
-    public function posts(): BelongsToMany
+    public function posts(): HasMany
     {
-        return $this->belongsToMany(Post::class);
+        return $this->hasMany(Post::class);
     }
 }

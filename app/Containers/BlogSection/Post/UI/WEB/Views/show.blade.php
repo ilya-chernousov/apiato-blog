@@ -1,4 +1,4 @@
-@extends('layouts.main', ['title' => $post->title])
+@extends('layouts.main', ['pageTitle' => $post->title])
 
 @section('content')
     <section class="post">
