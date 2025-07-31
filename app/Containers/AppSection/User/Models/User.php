@@ -6,6 +6,7 @@ use App\Containers\AppSection\Authorization\Enums\Role as RoleEnum;
 use App\Containers\AppSection\User\Data\Collections\UserCollection;
 use App\Containers\AppSection\User\Enums\Gender;
 use App\Containers\BlogSection\Post\Models\Post;
+use App\Containers\ShopSection\CartProduct\Models\CartProduct;
 use App\Ship\Parents\Models\UserModel as ParentUserModel;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -69,5 +70,10 @@ final class User extends ParentUserModel
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function cartProducts(): HasMany
+    {
+        return $this->hasMany(CartProduct::class);
     }
 }

@@ -6,6 +6,7 @@ use App\Containers\BlogSection\Post\Models\Post;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -25,7 +26,12 @@ class PostResource extends Resource
                 TextInput::make('title')->required()->maxLength(100),
                 RichEditor::make('body')->required()->maxLength(65535),
                 Select::make('category_id')->relationship('category', 'name')->required(),
-                FileUpload::make('image_path')->directory('posts')->required(),
+                SpatieMediaLibraryFileUpload::make('image')
+                    ->collection('posts')
+                    ->image()
+                    ->directory('posts')
+                    ->required(),
+                // FileUpload::make('image_path')->directory('posts')->required(),
             ])
             ->columns(1);
     }

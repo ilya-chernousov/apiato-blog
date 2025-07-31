@@ -4,7 +4,7 @@
     <section class="post">
         <div class="post__content">
             <h1 class="post__title text-2xl font-bold">{{ $post->title  }}</h1>
-            <div class="post__img mt-4" style="background-image: url({{ '/storage/' . $post->image_path }})"></div>
+            <div class="post__img mt-4" style="background-image: url({{ $post->getFirstMediaUrl('posts') }})"></div>
             <p class="post__body mt-3"> {!! nl2br($post->body) !!} </p>
         </div>
         <div class="post__line mt-5"></div>

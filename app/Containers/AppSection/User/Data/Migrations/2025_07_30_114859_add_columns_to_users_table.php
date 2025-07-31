@@ -19,8 +19,11 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::table('users', static function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->dropColumn('lastname');
+            $table->dropColumn('midname');
+            $table->date('birth')->nullable()->change();
+            $table->string('email')->nullable()->change();
+            $table->string('password')->nullable()->change();
         });
     }
 };

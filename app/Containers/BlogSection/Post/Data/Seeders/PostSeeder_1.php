@@ -9,6 +9,6 @@ final class PostSeeder_1 extends ParentSeeder
 {
     public function run(): void
     {
-        Post::factory(15)->create();
+//        Post::factory(15)->create();
     }
 }

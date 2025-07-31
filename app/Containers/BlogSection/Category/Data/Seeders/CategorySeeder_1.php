@@ -9,6 +9,6 @@ final class CategorySeeder_1 extends ParentSeeder
 {
     public function run(): void
     {
-        Category::factory(5)->create();
+//        Category::factory(5)->create();
     }
 }
