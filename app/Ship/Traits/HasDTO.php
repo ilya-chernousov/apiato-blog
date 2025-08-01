@@ -8,7 +8,6 @@ trait HasDTO
 {
     public function getDTO(): Data
     {
-        // Предполагается, что класс должен определить getDtoClass()
         $dtoClass = $this->getDtoClass();
 
         return $dtoClass::from($this->validated());

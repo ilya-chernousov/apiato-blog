@@ -9,14 +9,13 @@
                     <div class="products__list-item-img-block">
                         <img src="{{ $product->getFirstMediaUrl('products') }}" alt="" class="products__list-item-img w-full">
                     </div>
-                    <h3 class="products__list-item-name mt-3 text-lg">Товар</h3>
-                    <div class="products__list-item-price font-medium mt-1">590 руб.</div>
+                    <h3 class="products__list-item-name mt-3 text-lg">{{ $product->name }}</h3>
+                    <div class="products__list-item-price font-medium mt-1">{{ $product->price }} руб.</div>
                     <div class="products__list-item-button mt-3">
                         @if($cartProducts->contains('product_id', $product->id))
-                            <form action="" method="post">
+                            <form action="{{ route('cart-products.destroy', ['cartProduct' => $cartProducts->where('product_id', $product->id)->first()->id]) }}" method="post">
                                 @csrf
                                 @method('delete')
-                                <input type="hidden" name="id" value="{{ $cartProducts->where('product_id', $product->id)->first()->id }}">
                                 <button type="submit" class="products__list-item-button-add w-full text-center p-3 border rounded-lg border-orange-600 hover:bg-orange-400">Удалить</button>
                             </form>
                         @else

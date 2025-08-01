@@ -13,6 +13,16 @@
         <header class="header">
             <div class="header__content min-h-20 flex justify-between items-center">
                 <a href="{{ route('index') }}" class="header__logo font-bold text-3xl">ApiatoBlog</a>
+                <div class="header__links">
+                    <ul class="header__links-list flex gap-2">
+                        <li class="header__links-list-item">
+                            <a href="{{ route('products.index') }}" class="header__links-list-item-link">Товары</a>
+                        </li>
+                        <li class="header__links-list-item">
+                            <a href="{{ route('cart-products.index') }}" class="header__links-list-item-link">Корзина</a>
+                        </li>
+                    </ul>
+                </div>
                 <div class="header__profile">
                     @auth('web')
                         <a href="{{ route('filament.admin.pages.dashboard')  }}" class="header__profile-link">Админ-панель</a>

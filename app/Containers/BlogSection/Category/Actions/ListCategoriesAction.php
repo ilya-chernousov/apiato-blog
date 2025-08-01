@@ -13,7 +13,7 @@ final class ListCategoriesAction extends ParentAction
     ) {
     }
 
-    public function run(): Collection // ListCategoriesRequest $request
+    public function run(): Collection
     {
         return $this->repository->all();
     }

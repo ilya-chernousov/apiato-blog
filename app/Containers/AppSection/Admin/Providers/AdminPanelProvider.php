@@ -2,7 +2,7 @@
 
 namespace App\Containers\AppSection\Admin\Providers;
 
-use App\Ship\Parents\Providers\ParentAdminPanelProvider;
+use App\Ship\Parents\Providers\AdminPanelProvider as ParentAdminPanelProvider;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;

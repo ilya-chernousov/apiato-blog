@@ -12,6 +12,7 @@ return new class() extends Migration {
             $table->foreignId('product_id')->constrained('products');
             $table->foreignId('user_id')->constrained('users');
             $table->integer('count')->unsigned();
+            $table->unique(['product_id', 'user_id']);
             $table->timestamps();
         });
     }

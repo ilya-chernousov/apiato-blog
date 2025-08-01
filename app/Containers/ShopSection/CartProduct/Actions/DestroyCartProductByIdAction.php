@@ -4,21 +4,16 @@ namespace App\Containers\ShopSection\CartProduct\Actions;
 
 use App\Containers\ShopSection\CartProduct\Data\Repositories\CartProductRepository;
 use App\Ship\Parents\Actions\Action as ParentAction;
-use Illuminate\Support\Collection;
 
-final class ListCartProductsByUserId extends ParentAction
+final class DestroyCartProductByIdAction extends ParentAction
 {
     public function __construct(
         private readonly CartProductRepository $repository,
     ) {
     }
 
-    public function run(?int $id): Collection
+    public function run(int $id): bool
     {
-        if (!$id) {
-            collect();
-        }
-
-        return $this->repository->with('product')->findWhere(['user_id' => $id]);
+        return $this->repository->delete($id);
     }
 }

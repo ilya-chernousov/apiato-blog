@@ -2,17 +2,18 @@
 
 namespace App\Containers\ShopSection\CartProduct\UI\WEB\Controllers;
 
-use App\Containers\ShopSection\CartProduct\Actions\ListCartProductsAction;
-use App\Containers\ShopSection\CartProduct\UI\WEB\Requests\ListCartProductsRequest;
+use App\Containers\ShopSection\CartProduct\Actions\GetCartResultsAction;
+use App\Containers\ShopSection\CartProduct\Actions\ListCartProductsByUserId;
 use App\Ship\Parents\Controllers\WebController;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 final class ListCartProductsController extends WebController
 {
-    public function __invoke(ListCartProductsRequest $request, ListCartProductsAction $action): RedirectResponse
+    public function __invoke(ListCartProductsByUserId $action, GetCartResultsAction $cartResultsAction): View
     {
-        $action->run($request);
+        $cartProducts = $action->run(auth()->id());
+        $cartResults = $cartResultsAction->run($cartProducts);
 
-        return back();
+        return view('shopSection@cartProduct::index', compact('cartProducts', 'cartResults'));
     }
 }

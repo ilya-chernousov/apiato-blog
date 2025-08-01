@@ -20,3 +20,18 @@
     height: 1px;
     background-color: #cbcbcb;
 }
+
+.cart__product {
+    display: grid;
+    grid-template-columns: 2fr 8fr 2fr;
+    grid-gap: 12px;
+    align-items: center;
+}
+
+.cart__product-results {
+    justify-self: right;
+}
+
+.cart__product-count-input {
+    max-width: 80px;
+}
